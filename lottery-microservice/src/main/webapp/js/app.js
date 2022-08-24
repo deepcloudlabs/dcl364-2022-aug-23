@@ -3,10 +3,14 @@ class LotteryViewModel {
 		this.lotteryNumbers = ko.observableArray([]);
 	}
 	
-	drawLotteryNumbers = () => {
+	drawLotteryNumbers = () => { // lambda expression
        fetch("http://localhost:8080/lottery/api/v1/numbers?max=60&size=6&column=1")
            .then(res => res.json())
            .then( numbers => this.lotteryNumbers.push(numbers[0]));  		
+	}
+	
+	clearLotteryNumbers = () => {
+		this.lotteryNumbers([]);
 	}
 }
 
