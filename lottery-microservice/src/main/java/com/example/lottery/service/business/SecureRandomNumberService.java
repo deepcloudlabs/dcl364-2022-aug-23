@@ -2,7 +2,6 @@ package com.example.lottery.service.business;
 
 import java.security.SecureRandom;
 
-import javax.enterprise.inject.Alternative;
 import javax.inject.Named;
 import javax.inject.Singleton;
 

@@ -4,9 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import javax.ejb.Singleton;
 import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
 
 import com.example.lottery.service.LotteryService;
 import com.example.lottery.service.RandomNumberService;
@@ -14,12 +13,13 @@ import com.example.lottery.service.Secure;
 
 // CDI -> Spring Bean
 // CDI Bean -> Component
-@Named // CDI Bean
-@Singleton // Spring's Default Scope is Singleton -> @Scope("singleton")
+//@Named // CDI Bean
+//@Singleton // Spring's Default Scope is Singleton -> @Scope("singleton")
 //@RequestScoped
 //@SessionScoped
 //@ApplicationScoped
 //@ConversationScoped
+@Singleton // EJB Lite
 public class StandardLotteryService implements LotteryService {
 //	@Inject // Field Injection
 //	@Fast

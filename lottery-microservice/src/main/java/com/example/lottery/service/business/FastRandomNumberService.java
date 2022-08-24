@@ -2,7 +2,6 @@ package com.example.lottery.service.business;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import javax.enterprise.inject.Default;
 import javax.inject.Named;
 import javax.inject.Singleton;
 

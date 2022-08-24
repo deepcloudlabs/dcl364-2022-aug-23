@@ -1,0 +1,42 @@
+Java EE's Component (=Bean) Models:
+A) Web Components -> Web Container
+   Presentation: i) Servlet ii) JSP -> Servlet
+         Server-side MVC: Controller -> Servlet
+                          View       -> JSP -> Servlet
+                          Model      -> CDI Bean (@Named)	
+         Server-side MVC Framework
+         i. JSF (Java Server Faces)
+        ii. MVC 1.0 (Action-based MVC like Spring MVC)
+    
+    Business Logic: i) CDI Bean -> @Named + @Singleton  
+                    e.g.: StandardLotteryService, FastRandomNumberService  
+                   ii) EJB Lite: @Local only
+                    
+B) EJB Components -> EJB Container
+   Business Logic + Integration Logic
+     @Local, @Remote
+    i) Session Bean (Synchronous)
+       a) @Stateless
+       b) @Stateful
+       c) @Singleton 
+   ii) Message-Driven Bean (Asynchronous)
+       @MessageDriven 
+       
+       
+Project Types and Deployment Files:
+===================================
+1) Dynamic Web Application -> (W)eb (AR)chive, file extension: .war
+   WAR ==> Web Container      
+   Full Application Server + Web Profile
+   
+2) EJB Project -> ejb-jar (Java ARchive file)
+   EJB Container 
+   Full Application Server
+   
+3) JCA Adapter -> Resource ARchive file (RAR), file extension: .rar
+   EJB Container
+   Full Application Server
+   
+4) Enterprise Application -> Enterprise ARchive file, .ear       
+   Web Container + EJB Container          
+   Full Application Server
