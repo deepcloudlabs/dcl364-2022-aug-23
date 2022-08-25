@@ -6,20 +6,23 @@ import java.util.stream.IntStream;
 
 import javax.ejb.Singleton;
 import javax.inject.Inject;
+import javax.inject.Named;
 
+import com.example.lottery.interceptors.Audit;
+import com.example.lottery.interceptors.Profile;
 import com.example.lottery.service.LotteryService;
 import com.example.lottery.service.RandomNumberService;
 import com.example.lottery.service.Secure;
 
 // CDI -> Spring Bean
 // CDI Bean -> Component
-//@Named // CDI Bean
-//@Singleton // Spring's Default Scope is Singleton -> @Scope("singleton")
+@Named // CDI Bean
+@Singleton // Spring's Default Scope is Singleton -> @Scope("singleton")
 //@RequestScoped
 //@SessionScoped
 //@ApplicationScoped
 //@ConversationScoped
-@Singleton // EJB Lite
+//@Singleton // EJB Lite
 public class StandardLotteryService implements LotteryService {
 //	@Inject // Field Injection
 //	@Fast
@@ -45,7 +48,9 @@ public class StandardLotteryService implements LotteryService {
 	}
 
 	@Override
+	@Audit
 	public List<Integer> draw(int max, int size) {
+		System.err.println(randomNumberService.getClass().getName());
 		return IntStream.generate( () -> randomNumberService.generate(max))
 				        .distinct()
 				        .limit(size)
@@ -55,6 +60,7 @@ public class StandardLotteryService implements LotteryService {
 	}
 
 	@Override
+	@Profile
 	public List<List<Integer>> draw(int max, int size, int column) {
 		return IntStream.range(0, column)
 				        .mapToObj( i -> draw(max,size))

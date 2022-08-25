@@ -9,12 +9,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import com.example.lottery.interceptors.Audit;
+import com.example.lottery.interceptors.Profile;
 import com.example.lottery.service.LotteryService;
 
 // Specification: REST over HTTP -> JAX-RS (Integration)
 // Spring MVC
 // GoF Adapter Pattern
 @Path("/numbers")
+@Audit
+@Profile
 public class LotteryResource {
 
 	@Inject

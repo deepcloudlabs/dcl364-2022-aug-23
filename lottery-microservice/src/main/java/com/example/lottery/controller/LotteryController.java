@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.lottery.interceptors.Audit;
+import com.example.lottery.interceptors.Profile;
 import com.example.lottery.model.LotteryViewModel;
 import com.example.lottery.service.LotteryService;
 
@@ -16,6 +18,8 @@ import com.example.lottery.service.LotteryService;
  * Servlet implementation class LotteryController
  */
 @WebServlet(urlPatterns = "/draw")
+@Audit
+@Profile
 public class LotteryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     

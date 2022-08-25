@@ -7,4 +7,11 @@
 <!--        <alternatives> -->
 <!--          <class>com.example.lottery.service.business.SecureRandomNumberService</class> -->
 <!--        </alternatives> -->
+			<interceptors>
+<!-- 				<class>com.example.lottery.interceptors.AuditInterceptor</class> -->
+<!-- 				<class>com.example.lottery.interceptors.ProfileInterceptor</class> -->
+			</interceptors>
+			<decorators>
+<!-- 				<class>com.example.lottery.service.business.LotteryServiceDecorator</class> -->
+			</decorators>
 </beans>

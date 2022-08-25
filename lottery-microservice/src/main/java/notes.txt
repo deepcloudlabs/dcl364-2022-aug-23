@@ -40,3 +40,13 @@ Project Types and Deployment Files:
 4) Enterprise Application -> Enterprise ARchive file, .ear       
    Web Container + EJB Container          
    Full Application Server
+   
+DI Frameworks in Java:
+======================
+  i. Java EE
+     CDI -> Guice
+ ii. Guice (https://github.com/google/guice)
+iii. Spring Framework -> CDI
+ iv. JBoss SEAM -> Java EE
+  v. SEAM DI -> Delta Spike (https://deltaspike.apache.org/)(https://deltaspike.apache.org/documentation/)
+      
