@@ -3,7 +3,10 @@ package com.example.market.repository.jpa;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.Future;
 
+import javax.ejb.AsyncResult;
+import javax.ejb.Asynchronous;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,9 +35,10 @@ public class JpaStockRepository implements StockRepository {
 
 	@Override
 	@Transactional
-	public Stock create(Stock stock) {
+	@Asynchronous
+	public Future<Stock> create(Stock stock) {
 		entityManager.persist(stock);
-		return stock;
+		return new AsyncResult<Stock>(stock);
 	}
 
 	@Override
@@ -58,6 +62,19 @@ public class JpaStockRepository implements StockRepository {
 		return entityManager.createNamedQuery("Stock.findAllByCompany", Stock.class)
 						    .setParameter("company", company)
 	                        .getResultList();
+	}
+
+	@Override
+	@Transactional
+	public Stock update(Stock stock) {
+		var symbol = stock.getSymbol();
+		var managedStock = entityManager.find(Stock.class, symbol );
+		if (Objects.isNull(managedStock))
+			throw new IllegalArgumentException("Cannot find stock to update");
+		managedStock.setPrice(stock.getPrice());
+		managedStock.setDescription(stock.getDescription());
+		managedStock.setCompany(stock.getCompany());
+		return managedStock;
 	}
 
 }
