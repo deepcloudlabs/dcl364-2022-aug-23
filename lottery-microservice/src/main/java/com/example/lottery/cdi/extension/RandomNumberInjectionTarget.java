@@ -1,8 +1,10 @@
 package com.example.lottery.cdi.extension;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import javax.enterprise.context.spi.CreationalContext;
 import javax.enterprise.inject.spi.InjectionPoint;
@@ -46,9 +48,9 @@ public class RandomNumberInjectionTarget<T> implements InjectionTarget<T> {
 				var sorted = randomNumber.sorted();
 				var distinct = randomNumber.distinct();
 				var column = randomNumber.column();
-				var numbers = new ArrayList<List<Integer>>();
-				numbers.add(List.of(1, 2, 3, 4, 5, 6));
-				numbers.add(List.of(4, 8, 15, 16, 23, 42));
+				var numbers = IntStream.range(0, column)
+						               .mapToObj(i -> getNumbers(min,max,size,distinct,sorted))
+						               .collect(Collectors.toList());
 				try {
 					field.setAccessible(true);
 					field.set(instance, numbers);
@@ -58,6 +60,17 @@ public class RandomNumberInjectionTarget<T> implements InjectionTarget<T> {
 				}
 			}
 		}
+	}
+
+	private List<Integer> getNumbers(int min, int max, int size, boolean distinct, boolean sorted) {
+		var numbers = ThreadLocalRandom.current()
+				                       .ints(min, max);
+		if (distinct)
+			numbers = numbers.distinct();
+		numbers = numbers.limit(size);
+		if (sorted)
+			numbers = numbers.sorted();
+		return numbers.boxed().collect(Collectors.toList());
 	}
 
 	@Override

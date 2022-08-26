@@ -15,12 +15,13 @@ A) Web Components -> Web Container
 B) EJB Components -> EJB Container
    Business Logic + Integration Logic
      @Local, @Remote
-    i) Session Bean (Synchronous)
-       a) @Stateless
-       b) @Stateful
-       c) @Singleton 
+    i) Session Bean (EJB Container) CDI Bean (Web Container) @Named
+       a) @Stateless                @RequestScoped
+       b) @Stateful      ---->      @SessionScoped
+       c) @Singleton 				@Singleton
    ii) Message-Driven Bean (Asynchronous)
-       @MessageDriven 
+       @MessageDrivenBean 
+  iii) Batch Processing Specification  (JSR 352) -> Spring Batch       
        
        
 Project Types and Deployment Files:

@@ -38,13 +38,11 @@ public class LotterySessionListener implements HttpSessionListener,HttpSessionAt
 
 	@Override
 	public void attributeRemoved(HttpSessionBindingEvent event) {
-		// TODO Auto-generated method stub
 		HttpSessionAttributeListener.super.attributeRemoved(event);
 	}
 
 	@Override
 	public void attributeReplaced(HttpSessionBindingEvent event) {
-		// TODO Auto-generated method stub
 		HttpSessionAttributeListener.super.attributeReplaced(event);
 	}
 

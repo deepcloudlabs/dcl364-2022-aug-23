@@ -6,7 +6,6 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 
 import com.example.lottery.interceptors.Audit;
-import com.example.lottery.interceptors.Profile;
 import com.example.lottery.service.RandomNumberService;
 import com.example.lottery.service.Secure;
 
