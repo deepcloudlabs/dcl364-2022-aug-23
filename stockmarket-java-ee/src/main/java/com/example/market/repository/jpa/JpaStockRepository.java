@@ -37,6 +37,10 @@ public class JpaStockRepository implements StockRepository {
 	@Transactional
 	@Asynchronous
 	public Future<Stock> create(Stock stock) {
+		var symbol = stock.getSymbol();
+		var managedStock = entityManager.find(Stock.class, symbol );
+		if (Objects.nonNull(managedStock))
+			throw new IllegalArgumentException("Stock already exists.");
 		entityManager.persist(stock);
 		return new AsyncResult<Stock>(stock);
 	}

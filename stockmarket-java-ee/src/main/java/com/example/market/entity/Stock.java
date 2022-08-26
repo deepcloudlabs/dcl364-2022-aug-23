@@ -27,6 +27,7 @@ import com.example.validation.StockSymbol;
 	@NamedQuery(name="Stock.findAll",query = "select s from Stock s"),
 	@NamedQuery(name="Stock.findAllByCompany",query = "select s from Stock s where s.company=:company")
 })
+//@DynamicUpdate (Hibernate)
 public class Stock {
 	@Id
 	@StockSymbol
