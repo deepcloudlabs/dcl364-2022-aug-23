@@ -5,8 +5,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-import org.springframework.stereotype.Service;
-
 import com.example.service.RandomNumberService;
 import com.example.service.Strategy;
 import com.example.service.StrategyType;
