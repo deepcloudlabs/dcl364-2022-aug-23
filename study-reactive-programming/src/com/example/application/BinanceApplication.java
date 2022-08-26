@@ -7,7 +7,7 @@ import java.net.http.WebSocket.Listener;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.TimeUnit;
 
-public class MarketApplication {
+public class BinanceApplication {
 
 	public static void main(String[] args) throws InterruptedException {
 		var listener = new MarketTradeListener();

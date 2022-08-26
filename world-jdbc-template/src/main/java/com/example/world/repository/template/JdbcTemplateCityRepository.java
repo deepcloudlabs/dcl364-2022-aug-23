@@ -39,19 +39,16 @@ public class JdbcTemplateCityRepository implements CityRepository {
 
 	@Override
 	public City add(City entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public City update(City entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Optional<City> remove(Long key) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -10,17 +10,17 @@ import com.example.service.business.StandardCalculator;
 public class CalculatorApplication {
 
 	public static void main(String[] args) {
-		Calculator calculator = new StandardCalculator();
-		var clazz = calculator.getClass();
-		calculator = (Calculator) Proxy.newProxyInstance(
+		StandardCalculator standardCalculator = new StandardCalculator();
+		var clazz = standardCalculator.getClass();
+		Calculator calculator = (Calculator) Proxy.newProxyInstance(
 				clazz.getClassLoader(),
 				clazz.getInterfaces(), 
-				new AuditingHandler(calculator));
+				new AuditingHandler(standardCalculator));
 		calculator = (Calculator) Proxy.newProxyInstance(
 				clazz.getClassLoader(),
 				clazz.getInterfaces(), 
 				new ProfilingHandler(calculator));
-		
+		standardCalculator.setSelf(calculator);
 		System.out.println("3 + 5 = %f.".formatted(calculator.add(3, 5)));
 		System.out.println("3 - 5 = %f.".formatted(calculator.sub(3, 5)));
 		System.out.println("3 * 5 = %f.".formatted(calculator.mul(3, 5)));

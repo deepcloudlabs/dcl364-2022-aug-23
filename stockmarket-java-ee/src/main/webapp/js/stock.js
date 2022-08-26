@@ -45,7 +45,7 @@ class StockViewModel {
         // SSE
         this.eventSource = new EventSource("http://localhost:8080/stockmarket/api/v1/stocks/subscribe");
         this.eventSource.addEventListener("stockPriceChangedEvent", (event) => {
-          console.log(event)
+          console.table(event);
         });
     }
    findStock() {

@@ -21,7 +21,7 @@ B) EJB Components -> EJB Container
        c) @Singleton 				@Singleton
    ii) Message-Driven Bean (Asynchronous)
        @MessageDrivenBean 
-  iii) Batch Processing Specification  (JSR 352) -> Spring Batch       
+  iii) Batch Processing Specification  (JSR-352) -> Spring Batch       
        
        
 Project Types and Deployment Files:
@@ -51,3 +51,5 @@ iii. Spring Framework -> CDI
  iv. JBoss SEAM -> Java EE
   v. SEAM DI -> Delta Spike (https://deltaspike.apache.org/)(https://deltaspike.apache.org/documentation/)
       
+      
+http://localhost:8080/lottery/LotterySOAPWebService?WSDL      
